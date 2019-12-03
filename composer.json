@@ -1,0 +1,41 @@
+{
+  "name": "bicicleteria/proyecto",
+  "version": "0.0.1",
+  "type": "project",
+  "keywords": ["console", "tool", "example"],
+  "homepage": "https://google.com",
+  "time": "2019-10-28",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Leonardo Perez",
+      "email": "leoz79753@gmail.com",
+      "homepage": "http://www.sena.edu.co",
+      "role": "Developer"
+    }
+  ],
+  "require":{
+    "php": ">=7.1.0",
+    "almasaeed2010/adminlte": "^3.0",
+    "vlucas/phpdotenv": "^3.6"
+
+  },
+  "require-dev": {
+
+  },
+  "autoload": {
+
+  },
+  "scripts": {
+    "post-install-cmd": [
+    ],
+    "post-update-cmd": [
+    ]
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "extra": {
+
+  }
+}
