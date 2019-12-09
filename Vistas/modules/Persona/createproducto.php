@@ -20,7 +20,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Pagina Principal</h1>
+                            <h1>Ventas Bicicletas</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -36,20 +36,20 @@
                 <!-- Horizontal Form -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Productos</h3>
+                        <h3 class="card-title">Bicicletas</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form class="form-horizontal">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="Nombre" class="col-sm-2 col-form-label">Producto</label>
+                                <label for="Nombre" class="col-sm-2 col-form-label">IdBicicleteria</label>
                                 <div class="col-sm-10">
                                     <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Unidades">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Referncia</label>
                                 <div class="col-sm-10">
                                     <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Unidades">
                                 </div>
@@ -58,20 +58,52 @@
                             <form class="form-horizontal">
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label for="Nombre" class="col-sm-2 col-form-label"></label>
+                                        <label for="Nombre" class="col-sm-2 col-form-label">Unidades</label>
                                         <div class="col-sm-10">
                                             <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
+                                        <label for="Descripcion" class="col-sm-2 col-form-label">Marca</label>
                                         <div class="col-sm-10">
                                             <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
                                         </div>
                                     </div>
+                                    <!-- form start -->
+                                    <form class="form-horizontal">
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <label for="Nombre" class="col-sm-2 col-form-label">Precio</label>
+                                                <div class="col-sm-10">
+                                                    <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="Descripcion" class="col-sm-2 col-form-label">Color</label>
+                                                <div class="col-sm-10">
+                                                    <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
+                                                </div>
+                                            </div>
+                                            <!-- form start -->
+                                            <form class="form-horizontal">
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <label for="Nombre" class="col-sm-2 col-form-label">Modelo</label>
+                                                        <div class="col-sm-10">
+                                                            <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="Descripcion" class="col-sm-2 col-form-label">Fecha</label>
+                                                        <div class="col-sm-10">
+                                                            <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
+                                                        </div>
+                                                    </div>
 
-                                            <!-- /.card-body -->
-                                            <div class="card-footer">
+
+
+                                                    <!-- /.card-body -->
+                                    <div class="card-footer">
                                                 <button type="submit" class="btn btn-info">Enviar</button>
                                                 <button type="submit" class="btn btn-default float-right">Cancelar</button>
                                             </div>
