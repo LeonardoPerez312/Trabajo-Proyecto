@@ -128,7 +128,8 @@ class Productos
     abstract protected function deleted($id);
 
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->isConnected = true;
         try {
             $this->datab = new PDO(
