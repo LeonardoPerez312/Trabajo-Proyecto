@@ -1,14 +1,14 @@
 <?php
 
-
 namespace App\Modelos;
 
-
-
-
-
-abstract class db_abstract_class
-{
+/**
+ * Created by PhpStorm.
+ * User: Diego-PC
+ * Date: 10/12/2019
+ * Time: 9:17
+ */
+abstract class db_abstract_class {
 
     public $isConnected;
     protected $datab;
@@ -20,17 +20,11 @@ abstract class db_abstract_class
 
     # métodos abstractos para ABM de clases que hereden
     abstract protected static function search($query);
-
     abstract protected static function getAll();
-
     abstract protected static function searchForId($id);
-
     abstract protected function store();
-
     abstract protected function update();
-
     abstract protected function deleted($id);
-
 
     public function __construct(){
         $this->isConnected = true;
@@ -116,8 +110,4 @@ abstract class db_abstract_class
     public function deleteRow($query, $params){
         return $this->insertRow($query, $params);
     }
-
-
 }
-
-

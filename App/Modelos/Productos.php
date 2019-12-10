@@ -4,11 +4,107 @@
 namespace App\Modelos;
 
 
-
-
-
-abstract class db_abstract_class
+class Productos
 {
+    private $Codigo;
+    private  $Unidades;
+    Private $Referencia;
+    private $valor_Unidad;
+
+    /**
+     * Productos constructor.
+     * @param $Codigo
+     * @param $Unidades
+     * @param $Referencia
+     * @param $valor_Unidad
+     */
+    public function __construct($Codigo, $Unidades, $Referencia, $valor_Unidad)
+    {
+        $this->Codigo = $Codigo;
+        $this->Unidades = $Unidades;
+        $this->Referencia = $Referencia;
+        $this->valor_Unidad = $valor_Unidad;
+
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigo()
+    {
+        return $this->Codigo;
+    }
+
+    /**
+     * @param mixed $Codigo
+     */
+    public function setCodigo($Codigo): void
+    {
+        $this->Codigo = $Codigo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUnidades()
+    {
+        return $this->Unidades;
+    }
+
+    /**
+     * @param mixed $Unidades
+     */
+    public function setUnidades($Unidades): void
+    {
+        $this->Unidades = $Unidades;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReferencia()
+    {
+        return $this->Referencia;
+    }
+
+    /**
+     * @param mixed $Referencia
+     */
+    public function setReferencia($Referencia): void
+    {
+        $this->Referencia = $Referencia;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValorUnidad()
+    {
+        return $this->valor_Unidad;
+    }
+
+    /**
+     * @param mixed $valor_Unidad
+     */
+    public function setValorUnidad($valor_Unidad): void
+    {
+        $this->valor_Unidad = $valor_Unidad;
+    }
+
+    public function MostarDatos()
+    {
+        echo "<H4>Los datos del persona son: </H4>";
+        echo "<ul>";
+        echo   "<li><strong>Codigo: </strong>".$this->getRol()."</li>";
+        echo   "<li><strong>Unidades: </strong>".$this->getNombre_Documento()."</li>";
+        echo   "<li><strong>Referencia: </strong>".$this->getNumeroDocumento()."</li>";
+        echo   "<li><strong>Valor_Unidad: </strong>".$this->getNombre()."</li>";
+        echo "</ul>";
+
+    }
+
+
 
     public $isConnected;
     protected $datab;
@@ -119,5 +215,6 @@ abstract class db_abstract_class
 
 
 }
+
 
 

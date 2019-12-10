@@ -36,73 +36,37 @@
                 <!-- Horizontal Form -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Bicicletas</h3>
+                        <h3 class="card-title">Productos</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form class="form-horizontal">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="Nombre" class="col-sm-2 col-form-label">IdBicicleteria</label>
+                                <label for="Nombre" class="col-sm-2 col-form-label">Codigo</label>
                                 <div class="col-sm-10">
                                     <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Unidades">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="Descripcion" class="col-sm-2 col-form-label">Referncia</label>
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Unidades</label>
                                 <div class="col-sm-10">
                                     <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Unidades">
                                 </div>
                             </div>
-                            <!-- form start -->
-                            <form class="form-horizontal">
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <label for="Nombre" class="col-sm-2 col-form-label">Unidades</label>
-                                        <div class="col-sm-10">
-                                            <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="Descripcion" class="col-sm-2 col-form-label">Marca</label>
-                                        <div class="col-sm-10">
-                                            <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
-                                        </div>
-                                    </div>
-                                    <!-- form start -->
-                                    <form class="form-horizontal">
-                                        <div class="card-body">
-                                            <div class="form-group row">
-                                                <label for="Nombre" class="col-sm-2 col-form-label">Precio</label>
-                                                <div class="col-sm-10">
-                                                    <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="Descripcion" class="col-sm-2 col-form-label">Color</label>
-                                                <div class="col-sm-10">
-                                                    <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
-                                                </div>
-                                            </div>
-                                            <!-- form start -->
-                                            <form class="form-horizontal">
-                                                <div class="card-body">
-                                                    <div class="form-group row">
-                                                        <label for="Nombre" class="col-sm-2 col-form-label">Modelo</label>
-                                                        <div class="col-sm-10">
-                                                            <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="Descripcion" class="col-sm-2 col-form-label">Fecha</label>
-                                                        <div class="col-sm-10">
-                                                            <input required type="text" class="form-control" id="Referencia" name="Valor_Unidades" placeholder="">
-                                                        </div>
-                                                    </div>
-
-
-
-                                                    <!-- /.card-body -->
+                            <div class="form-group row">
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Referencia</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Referencia">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Valor Unidad</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Valor Unidad">
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
                                     <div class="card-footer">
                                                 <button type="submit" class="btn btn-info">Enviar</button>
                                                 <button type="submit" class="btn btn-default float-right">Cancelar</button>

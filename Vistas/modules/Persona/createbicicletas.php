@@ -31,6 +31,7 @@
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
+
             <!-- Main content -->
             <section class="content">
                 <!-- Horizontal Form -->
@@ -43,59 +44,57 @@
                     <form class="form-horizontal">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="Nombre" class="col-sm-2 col-form-label">Persona</label>
+                                <label for="Nombre" class="col-sm-2 col-form-label">Referencia</label>
                                 <div class="col-sm-10">
-                                    <input required type="text" class="form-control" id="idPersona" name="Rol" placeholder="Nombre_Documento">
+                                    <input required type="text" class="form-control" id="idPersona" name="Rol" placeholder="Referencia">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="Descripcion" class="col-sm-2 col-form-label">Persona</label>
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Unidades</label>
                                 <div class="col-sm-10">
-                                    <input required type="text" class="form-control" id="idPërsona" name="Rol" placeholder="Nombre_Documento">
+                                    <input required type="text" class="form-control" id="idPërsona" name="Rol" placeholder="Unidades">
                                 </div>
                             </div>
-                            <!-- form start -->
-                            <form class="form-horizontal">
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <label for="Nombre" class="col-sm-2 col-form-label"></label>
-                                        <div class="col-sm-10">
-                                            <input required type="text" class="form-control" id="Numero_Documento" name="Nombre" placeholder="Apellidos">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
-                                        <div class="col-sm-10">
-                                            <input required type="text" class="form-control" id="Numero_Documento" name="Nombre" placeholder="APellidos">
-                                        </div>
-                                    </div>
-                                    <!-- form start -->
-                                    <form class="form-horizontal">
-                                        <div class="card-body">
-                                            <div class="form-group row">
-                                                <label for="Nombre" class="col-sm-2 col-form-label">Bicicletas</label>
-                                                <div class="col-sm-10">
-                                                    <input required type="text" class="form-control" id="Celular" name="Correo" placeholder="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
-                                                <div class="col-sm-10">
-                                                    <input required type="text" class="form-control" id="Celular" name="Correo" placeholder="">
-                                                </div>
-                                            </div>
-
-
-
-                                            <!-- /.card-body -->
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-info">Enviar</button>
-                                                <button type="submit" class="btn btn-default float-right">Cancelar</button>
-                                            </div>
-                                            <!-- /.card-footer -->
-                                    </form>
+                            <div class="form-group row">
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Marca</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Marca">
                                 </div>
-                                <!-- /.card -->
+                            </div>
+                            <div class="form-group row">
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Precio</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Precio">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Color</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Color">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Modelo</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Modelo">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="idProductos" name="Codigo" placeholder="Fecha">
+                                </div>
+                            </div>
+
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-info">Enviar</button>
+                                <button type="submit" class="btn btn-default float-right">Cancelar</button>
+                            </div>
+                            <!-- /.card-footer -->
+                    </form>
+                </div>
+                <!-- /.card -->
             </section>
             <!-- /.content -->
         </div>
@@ -106,5 +105,6 @@
     <!-- ./wrapper -->
     <?php require ('../../partials/scripts.php');?>
     </body>
-    </html>
+</html>
 <?php require("../../partials/routes.php"); ?>
+

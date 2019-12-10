@@ -43,50 +43,45 @@
                 <form class="form-horizontal">
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="Nombre" class="col-sm-2 col-form-label">Persona</label>
+                            <label for="Nombre" class="col-sm-2 col-form-label">Rol</label>
                             <div class="col-sm-10">
-                                <input required type="text" class="form-control" id="idPersona" name="Rol" placeholder="Nombre_Documento">
+                                <input required type="text" class="form-control" id="idPersona" name="Rol" placeholder="Rol">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
+                            <label for="Descripcion" class="col-sm-2 col-form-label">Nombre Documento</label>
                             <div class="col-sm-10">
-                                <input required type="text" class="form-control" id="idBicicletas" name="Referencia" placeholder="Unidades">
+                                <input required type="text" class="form-control" id="idBicicletas" name="Referencia" placeholder="Nombre Documento">
                             </div>
                         </div>
-                        <!-- form start -->
-                        <form class="form-horizontal">
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="Nombre" class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
-                                        <input required type="text" class="form-control" id="Numero_Documento" name="Nombre" placeholder="Apellidos">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
-                                    <div class="col-sm-10">
-                                        <input required type="text" class="form-control" id="Precio" name="Color" placeholder="Modelo">
-                                    </div>
-                                </div>
-                                <!-- form start -->
-                                <form class="form-horizontal">
-                                    <div class="card-body">
-                                        <div class="form-group row">
-                                            <label for="Nombre" class="col-sm-2 col-form-label">Bicicletas</label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" class="form-control" id="Celular" name="Correo" placeholder="Bicicleta">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="Descripcion" class="col-sm-2 col-form-label">Descripcion</label>
-                                            <div class="col-sm-10">
-                                                <input required type="text" class="form-control" id="Fecha" name="Venta" placeholder="">
-                                            </div>
-                                        </div>
-
-
-
+                        <div class="form-group row">
+                            <label for="Descripcion" class="col-sm-2 col-form-label">Numero Documento</label>
+                            <div class="col-sm-10">
+                                <input required type="text" class="form-control" id="Fecha" name="Venta" placeholder="Numero Documento">
+                            </div>
+                        </div> <div class="form-group row">
+                            <label for="Descripcion" class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-10">
+                                <input required type="text" class="form-control" id="Fecha" name="Venta" placeholder="Nombre">
+                            </div>
+                        </div> <div class="form-group row">
+                            <label for="Descripcion" class="col-sm-2 col-form-label">Apellidos</label>
+                            <div class="col-sm-10">
+                                <input required type="text" class="form-control" id="Fecha" name="Venta" placeholder="Apellidos">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Descripcion" class="col-sm-2 col-form-label">Celular</label>
+                            <div class="col-sm-10">
+                                <input required type="text" class="form-control" id="Fecha" name="Venta" placeholder="Celular">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Descripcion" class="col-sm-2 col-form-label">Correo</label>
+                            <div class="col-sm-10">
+                                <input required type="text" class="form-control" id="Fecha" name="Venta" placeholder="Correo">
+                            </div>
+                        </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-info">Enviar</button>

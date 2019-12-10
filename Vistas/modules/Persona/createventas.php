@@ -43,45 +43,32 @@
                     <form class="form-horizontal">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="Nombre" class="col-sm-2 col-form-label">Ventas</label>
+                                <label for="Nombre" class="col-sm-2 col-form-label">Valor</label>
                                 <div class="col-sm-10">
                                     <input required type="text" class="form-control" id="idVenta" name="Rol" placeholder="Nombre_Documento">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="Descripcion" class="col-sm-2 col-form-label">Ventas</label>
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Forma de pago</label>
                                 <div class="col-sm-10">
                                     <input required type="text" class="form-control" id="idVentas" name="Valor" placeholder="Forma_Pago">
                                 </div>
                             </div>
-                            <!-- form start -->
-                            <form class="form-horizontal">
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <label for="Nombre" class="col-sm-2 col-form-label"></label>
-                                        <div class="col-sm-10">
-                                            <input required type="text" class="form-control" id="Fecha" name="" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="Descripcion" class="col-sm-2 col-form-label">Ventas</label>
-                                        <div class="col-sm-10">
-                                            <input required type="text" class="form-control" id="Fecha" name="" placeholder="">
-                                        </div>
-                                    </div>
-
-
-
-
-                                            <!-- /.card-body -->
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-info">Enviar</button>
-                                                <button type="submit" class="btn btn-default float-right">Cancelar</button>
-                                            </div>
-                                            <!-- /.card-footer -->
-                                    </form>
+                            <div class="form-group row">
+                                <label for="Descripcion" class="col-sm-2 col-form-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="idVentas" name="Valor" placeholder="Fecha">
                                 </div>
-                                <!-- /.card -->
+
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-info">Enviar</button>
+                                    <button type="submit" class="btn btn-default float-right">Cancelar</button>
+                                </div>
+                                <!-- /.card-footer -->
+                    </form>
+                </div>
+                <!-- /.card -->
             </section>
             <!-- /.content -->
         </div>
@@ -92,5 +79,5 @@
     <!-- ./wrapper -->
     <?php require ('../../partials/scripts.php');?>
     </body>
-    </html>
+</html>
 <?php require("../../partials/routes.php"); ?>

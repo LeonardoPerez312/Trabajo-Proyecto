@@ -4,31 +4,28 @@
 namespace App\Modelos;
 
 
-class Bicicletas
+class Bicicleta
 {
-    Private $Referencia;
-    Private $Unidades;
-    Private $Marca;
-    Private $Precio;
-    Private $Color;
-    Private $Modelo;
-    Private $Fecha;
+  private $Referencia;
+  private $Unidades;
+  Private $Precio;
+  private $Color;
+  private $Modelo;
+  private $Fecha;
 
     /**
-     * Bicicletas constructor.
+     * Bicicleta constructor.
      * @param $Referencia
      * @param $Unidades
-     * @param $Marca
      * @param $Precio
      * @param $Color
      * @param $Modelo
      * @param $Fecha
      */
-    public function __construct($Referencia, $Unidades, $Marca, $Precio, $Color, $Modelo, $Fecha)
+    public function __construct($Referencia, $Unidades, $Precio, $Color, $Modelo, $Fecha)
     {
         $this->Referencia = $Referencia;
         $this->Unidades = $Unidades;
-        $this->Marca = $Marca;
         $this->Precio = $Precio;
         $this->Color = $Color;
         $this->Modelo = $Modelo;
@@ -46,7 +43,7 @@ class Bicicletas
     /**
      * @param mixed $Referencia
      */
-    public function setReferencia($Referencia)
+    public function setReferencia($Referencia): void
     {
         $this->Referencia = $Referencia;
     }
@@ -62,25 +59,9 @@ class Bicicletas
     /**
      * @param mixed $Unidades
      */
-    public function setUnidades($Unidades)
+    public function setUnidades($Unidades): void
     {
         $this->Unidades = $Unidades;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMarca()
-    {
-        return $this->Marca;
-    }
-
-    /**
-     * @param mixed $Marca
-     */
-    public function setMarca($Marca)
-    {
-        $this->Marca = $Marca;
     }
 
     /**
@@ -94,7 +75,7 @@ class Bicicletas
     /**
      * @param mixed $Precio
      */
-    public function setPrecio($Precio)
+    public function setPrecio($Precio): void
     {
         $this->Precio = $Precio;
     }
@@ -110,7 +91,7 @@ class Bicicletas
     /**
      * @param mixed $Color
      */
-    public function setColor($Color)
+    public function setColor($Color): void
     {
         $this->Color = $Color;
     }
@@ -126,7 +107,7 @@ class Bicicletas
     /**
      * @param mixed $Modelo
      */
-    public function setModelo($Modelo)
+    public function setModelo($Modelo): void
     {
         $this->Modelo = $Modelo;
     }
@@ -142,24 +123,12 @@ class Bicicletas
     /**
      * @param mixed $Fecha
      */
-    public function setFecha($Fecha)
+    public function setFecha($Fecha): void
     {
         $this->Fecha = $Fecha;
     }
-    public function MostarDatos()
-    {
-        echo "<H4>Los datos de la Bicicleta son: </H4>";
-        echo "<ul>";
-        echo   "<li><strong>Referencia: </strong>".$this->getReferencia()."</li>";
-        echo   "<li><strong>Unidades: </strong>".$this->Unidades()."</li>";
-        echo   "<li><strong>Marca: </strong>".$this->getMarca()."</li>";
-        echo   "<li><strong>Precio: </strong>".$this->getPrecio()."</li>";
-        echo   "<li><strong>Color: </strong>".$this->getColor()."</li>";
-        echo   "<li><strong>Modelo: </strong>".$this->getModelo()."</li>";
-        echo   "<li><strong>Fecha: </strong>".$this->getFecha()."</li>";
-        echo "</ul>";
 
-    }
+
 
 
 }
