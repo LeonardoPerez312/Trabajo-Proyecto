@@ -4,17 +4,19 @@
 namespace App\Modelos;
 
 
-class Bicicleta
+class Bicicleta extends db_abstract_class
 {
-  private $Referencia;
-  private $Unidades;
-  Private $Precio;
-  private $Color;
-  private $Modelo;
-  private $Fecha;
+    private $idBicicletas;
+    private $Referencia;
+    private $Unidades;
+    Private $Precio;
+    private $Color;
+    private $Modelo;
+    private $Fecha;
 
     /**
      * Bicicleta constructor.
+     * @param $idBicicletas
      * @param $Referencia
      * @param $Unidades
      * @param $Precio
@@ -22,14 +24,28 @@ class Bicicleta
      * @param $Modelo
      * @param $Fecha
      */
-    public function __construct($Referencia, $Unidades, $Precio, $Color, $Modelo, $Fecha)
+    public function __construct($idBicicletas, $Referencia, $Unidades, $Precio, $Color, $Modelo, $Fecha)
     {
-        $this->Referencia = $Referencia;
-        $this->Unidades = $Unidades;
-        $this->Precio = $Precio;
-        $this->Color = $Color;
-        $this->Modelo = $Modelo;
-        $this->Fecha = $Fecha;
+        $this->idBicicletas = $idBicicletas['idBicicleta'];
+        $this->Referencia = $Referencia['Referencia'];
+        $this->Unidades = $Unidades['Unidades'];
+        $this->Precio = $Precio['Precio'];
+        $this->Color = $Color['Color'];
+        $this->Modelo = $Modelo['Modelo'];
+        $this->Fecha = $Fecha;['Fecha'];
+    }
+
+    /* Metodo destructor cierra la conexion. */
+    function __destruct() {
+        $this->Disconnect();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdBicicletas()
+    {
+        return $this->idBicicletas;
     }
 
     /**
@@ -41,27 +57,11 @@ class Bicicleta
     }
 
     /**
-     * @param mixed $Referencia
-     */
-    public function setReferencia($Referencia): void
-    {
-        $this->Referencia = $Referencia;
-    }
-
-    /**
      * @return mixed
      */
     public function getUnidades()
     {
         return $this->Unidades;
-    }
-
-    /**
-     * @param mixed $Unidades
-     */
-    public function setUnidades($Unidades): void
-    {
-        $this->Unidades = $Unidades;
     }
 
     /**
@@ -73,27 +73,11 @@ class Bicicleta
     }
 
     /**
-     * @param mixed $Precio
-     */
-    public function setPrecio($Precio): void
-    {
-        $this->Precio = $Precio;
-    }
-
-    /**
      * @return mixed
      */
     public function getColor()
     {
         return $this->Color;
-    }
-
-    /**
-     * @param mixed $Color
-     */
-    public function setColor($Color): void
-    {
-        $this->Color = $Color;
     }
 
     /**
@@ -105,14 +89,6 @@ class Bicicleta
     }
 
     /**
-     * @param mixed $Modelo
-     */
-    public function setModelo($Modelo): void
-    {
-        $this->Modelo = $Modelo;
-    }
-
-    /**
      * @return mixed
      */
     public function getFecha()
@@ -120,12 +96,87 @@ class Bicicleta
         return $this->Fecha;
     }
 
-    /**
-     * @param mixed $Fecha
-     */
-    public function setFecha($Fecha): void
+    protected function store()
     {
-        $this->Fecha = $Fecha;
+        $this->insertRow("INSERT INTO weber.usuarios VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array(
+                $this->idBicicletas,
+                $this->Referencia,
+                $this->Unidades,
+                $this->Precio,
+                $this->Color,
+                $this->Modelo,
+                $this->Fecha,
+            )
+        );
+        $this->Disconnect();
+    }
+
+
+    protected function update()
+    {
+        $this->updateRow("UPDATE weber.Bicicletas SET  = ?, idBicicletas = ?, Referencia = ?, Unidades = ?, Precio = ?, Color = ?, Modelo =?, Fecha =? user = ?, password = ?, rol = ?, estado = ? WHERE id = ?", array(
+                $this->idBicicletas,
+                $this->Referencia,
+                $this->Unidades,
+                $this->Precio,
+                $this->Color,
+                $this->Modelo,
+                $this->Fecha,
+
+            )
+        );
+        $this->Disconnect();
+    }
+    protected function deleted($id)
+    {
+        // TODO: Implement deleted() method.
+    }
+    protected static function search($query)
+    {
+        $arrUsuarios = array();
+        $tmp = new Usuarios();
+        $getrows = $tmp->getRows($query);
+
+        foreach ($getrows as $valor) {
+            $Usuario = new Usuarios();
+            $Usuario->idBicicleta = $valor['idBicicletas'];
+            $Usuario->Referencia = $valor['Referencia'];
+            $Usuario->Unidades = $valor['Unidades'];
+            $Usuario->Precio = $valor['Precio'];
+            $Usuario->Color = $valor['Color'];
+            $Usuario->Modelo = $valor['Modelo'];
+            $Usuario->Fecha = $valor['Fecha'];
+            $Usuario->Disconnect();
+            array_push($arrUsuarios, $Usuario);
+        }
+        $tmp->Disconnect();
+        return $arrUsuarios;
+    }
+
+    protected static function searchForId($id)
+    {
+        $Usuario = new Usuarios();
+        if ($id > 0){
+            $getrow = $Usuario->getRow("SELECT * FROM weber.usuarios WHERE id =?", array($id));
+            $Usuario->idBicicletas = $getrow['idBicicleta'];
+            $Usuario->Referencia = $getrow['Referencia'];
+            $Usuario->Unidades = $getrow['Unidades'];
+            $Usuario->Precio = $getrow['Precio'];
+            $Usuario->Color = $getrow['Color'];
+            $Usuario->Modelo = $getrow['Modelo'];
+            $Usuario->Fecha = $getrow['Fecha'];
+            $Usuario->Disconnect();
+            return $Usuario;
+        }else{
+            $Usuario->Disconnect();
+            unset($Usuario);
+            return NULL;
+        }
+    }
+
+    protected static function getAll()
+    {
+        return Usuarios::buscar("SELECT * FROM weber.usuarios");
     }
 
 

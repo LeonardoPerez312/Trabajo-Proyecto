@@ -4,11 +4,71 @@
 namespace App\Modelos;
 
 
-
-
-
-abstract class db_abstract_class
+class Ventas
 {
+    private $idVenta;
+    private $Valor;
+    private  $Forma_Pago;
+    private  $Fecha;
+
+    /**
+     * Ventas constructor.
+     * @param $idVenta
+     * @param $Valor
+     * @param $Forma_Pago
+     * @param $Fecha
+     */
+    public function __construct($idVenta, $Valor, $Forma_Pago, $Fecha)
+    {
+        $this->idVenta = $idVenta;
+        $this->Valor = $Valor;
+        $this->Forma_Pago = $Forma_Pago;
+        $this->Fecha = $Fecha;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdVenta()
+    {
+        return $this->idVenta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValor()
+    {
+        return $this->Valor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFormaPago()
+    {
+        return $this->Forma_Pago;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFecha()
+    {
+        return $this->Fecha;
+    }
+
+    public function MostarDatos()
+    {
+        echo "<H4>Los datos del persona son: </H4>";
+        echo "<ul>";
+        echo "<li><strong>idvalor: </strong>" . $this->getRol() . "</li>";
+        echo "<li><strong>Valor: </strong>" . $this->getNumeroDocumento() . "</li>";
+        echo "<li><strong>Forma_Pago: </strong>" . $this->getNombre() . "</li>";
+        echo "<li><strong>Fecha: </strong>" . $this->getRol() . "</li>";
+        echo "</ul>";
+
+    }
 
     public $isConnected;
     protected $datab;
@@ -32,7 +92,8 @@ abstract class db_abstract_class
     abstract protected function deleted($id);
 
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->isConnected = true;
         try {
             $this->datab = new PDO(
@@ -118,6 +179,5 @@ abstract class db_abstract_class
     }
 
 
+
 }
-
-

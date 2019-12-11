@@ -6,34 +6,59 @@ namespace App\Modelos;
 
 class Persona
 {
-    private $id;
-    Public $Rol;
-    private $Nombre_Documento;
-    private $Numero_Documento;
-    private $Nombre;
-    private $Apellidoz;
-    private $Celular;
-    private $Correo;
+  private $idPersona;
+  private $Rol;
+  private $Nombre_Documento;
+  private Numero_Documento;
+  private $Nombre;
+  private $apellidos;
+  private $Celular;
+  private $Correo;
+  private $user;
+  private $password;
+  private $estado;
 
     /**
      * Persona constructor.
+     * @param $idPersona
      * @param $Rol
      * @param $Nombre_Documento
-     * @param $Numero_Documento
      * @param $Nombre
-     * @param $Apellidoz
+     * @param $apellidos
      * @param $Celular
      * @param $Correo
+     * @param $user
+     * @param $password
+     * @param $estado
      */
-    public function __construct($Rol, $Nombre_Documento, $Numero_Documento, $Nombre, $Apellidoz, $Celular, $Correo)
+    public function __construct($idPersona, $Rol, $Nombre_Documento, $Nombre, $apellidos, $Celular, $Correo, $user, $password, $estado)
     {
-        $this->Rol = $Rol;
-        $this->Nombre_Documento = $Nombre_Documento;
-        $this->Numero_Documento = $Numero_Documento;
-        $this->Nombre = $Nombre;
-        $this->Apellidoz = $Apellidoz;
-        $this->Celular = $Celular;
-        $this->Correo = $Correo;
+        $this->idPersona = $idPersona['idPersona'];
+        $this->Rol = $Rol['Rol'];
+        $this->Nombre_Documento['Nombre Documento'];
+        $this->Nombre_Documento['Numero Documento'];
+        $this->Nombre = $Nombre['Nombres'];
+        $this->apellidos = $apellidos['Apellidos'];
+        $this->Celular = $Celular['Celular'];
+        $this->Correo = $Correo['Correo'];
+        $this->user = $user['user'];
+        $this->password = $password['password'];
+        $this->estado = $estado['estado'];
+    }
+
+
+    /* Metodo destructor cierra la conexion. */
+    function __destruct() {
+        $this->Disconnect();
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getIdPersona()
+    {
+        return $this->idPersona;
     }
 
     /**
@@ -45,43 +70,11 @@ class Persona
     }
 
     /**
-     * @param mixed $Rol
-     */
-    public function setRol($Rol): void
-    {
-        $this->Rol = $Rol;
-    }
-
-    /**
      * @return mixed
      */
     public function getNombreDocumento()
     {
         return $this->Nombre_Documento;
-    }
-
-    /**
-     * @param mixed $Nombre_Documento
-     */
-    public function setNombreDocumento($Nombre_Documento): void
-    {
-        $this->Nombre_Documento = $Nombre_Documento;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumeroDocumento()
-    {
-        return $this->Numero_Documento;
-    }
-
-    /**
-     * @param mixed $Numero_Documento
-     */
-    public function setNumeroDocumento($Numero_Documento): void
-    {
-        $this->Numero_Documento = $Numero_Documento;
     }
 
     /**
@@ -93,27 +86,11 @@ class Persona
     }
 
     /**
-     * @param mixed $Nombre
-     */
-    public function setNombre($Nombre): void
-    {
-        $this->Nombre = $Nombre;
-    }
-
-    /**
      * @return mixed
      */
-    public function getApellidoz()
+    public function getApellidos()
     {
-        return $this->Apellidoz;
-    }
-
-    /**
-     * @param mixed $Apellidoz
-     */
-    public function setApellidoz($Apellidoz): void
-    {
-        $this->Apellidoz = $Apellidoz;
+        return $this->apellidos;
     }
 
     /**
@@ -125,14 +102,6 @@ class Persona
     }
 
     /**
-     * @param mixed $Celular
-     */
-    public function setCelular($Celular): void
-    {
-        $this->Celular = $Celular;
-    }
-
-    /**
      * @return mixed
      */
     public function getCorreo()
@@ -141,24 +110,120 @@ class Persona
     }
 
     /**
-     * @param mixed $Correo
+     * @return mixed
      */
-    public function setCorreo($Correo): void
+    public function getUser()
     {
-        $this->Correo = $Correo;
+        return $this->user;
     }
 
-
-    public function MostarDatos()
+    /**
+     * @return mixed
+     */
+    public function getPassword()
     {
-        echo "<H4>Los datos del persona son: </H4>";
-        echo "<ul>";
-        echo   "<li><strong>: </strong>".$this->getRol()."</li>";
-        echo   "<li><strong>Unidades: </strong>".$this->getNombre_Documento()."</li>";
-        echo   "<li><strong>Referencia: </strong>".$this->getNumeroDocumento()."</li>";
-        echo   "<li><strong>Valor_Unidad: </strong>".$this->getNombre()."</li>";
-        echo "</ul>";
+        return $this->password;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    protected function store()
+    {
+        $this->insertRow("INSERT INTO weber.usuarios VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array(
+                $this->idPersona,
+                $this->Rol,
+                $this->Nombre_Documento,
+                $this->Numero_documento,
+                $this->Nombre,
+                $this->apellidos,
+                $this->Celular,
+                $this->Correo,
+                $this->user,
+                $this->password,
+                $this->estado,
+            )
+        );
+        $this->Disconnect();
+    }
+
+    protected function update()
+    {
+        $this->updateRow("UPDATE weber.usuarios SET nombres = ?, apellidos = ?, tipo_documento = ?, documento = ?, telefono = ?, direccion = ?, user = ?, password = ?, rol = ?, estado = ? WHERE id = ?", array(
+                $this->idPersona,
+                $this->Rol,
+                $this->Nombre_Documento,
+                $this->Numero_Documento,
+                $this->Nombre,
+                $this->apellidos,
+                $this->Celular,
+                $this->Correo,
+                $this->user,
+                $this->password,
+                $this->estado,
+            )
+        );
+        $this->Disconnect();
+    }
+
+    protected static function search($query)
+    {
+        $arrUsuarios = array();
+        $tmp = new Usuarios();
+        $getrows = $tmp->getRows($query);
+
+        foreach ($getrows as $valor) {
+            $Usuario = new Usuarios();
+            $Usuario->idPersona = $valor['idPersona'];
+            $Usuario->Rol = $valor['Rol'];
+            $Usuario->Nombre_Documento = $valor['Nombre_Documento'];
+            $Usuario->Numero_Documento = $valor['Numero_Documento'];
+            $Usuario->Nombre = $valor['Nombre'];
+            $Usuario->apellidos = $valor['apellidos'];
+            $Usuario->Celular = $valor['Celular'];
+            $Usuario->Correo = $valor['Correo'];
+            $Usuario->user = $valor['user'];
+            $Usuario->password = $valor['password'];
+            $Usuario->estado = $valor['estado'];
+            $Usuario->Disconnect();
+            array_push($arrUsuarios, $Usuario);
+        }
+        $tmp->Disconnect();
+        return $arrUsuarios;
+    }
+
+    protected static function searchForId($id)
+    {
+        $Usuario = new Usuarios();
+        if ($id > 0){
+            $getrow = $Usuario->getRow("SELECT * FROM weber.usuarios WHERE id =?", array($id));
+            $Usuario->idPersona = $getrow['idPersona'];
+            $Usuario->Rol = $getrow['Rol'];
+            $Usuario->Nombre_Documento = $getrow['Nombre_Documento'];
+            $Usuario->Numero_Documento = $getrow['Numero_Documento'];
+            $Usuario->Nombre = $getrow['Nombre'];
+            $Usuario->Apellidos = $getrow['Apellidos'];
+            $Usuario->Celular = $getrow['Correo'];
+            $Usuario->user = $getrow['user'];
+            $Usuario->password = $getrow['password'];
+            $Usuario->estado = $getrow['estado'];
+            $Usuario->Disconnect();
+            return $Usuario;
+        }else{
+            $Usuario->Disconnect();
+            unset($Usuario);
+            return NULL;
+        }
+    }
+
+    protected static function getAll()
+    {
+        return Usuarios::buscar("SELECT * FROM weber.usuarios");
     }
 
 

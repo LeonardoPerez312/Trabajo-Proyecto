@@ -6,26 +6,41 @@ namespace App\Modelos;
 
 class Productos
 {
+    private $idProducto;
     private $Codigo;
-    private  $Unidades;
-    Private $Referencia;
-    private $valor_Unidad;
+    private $Unidades;
+    private $Referencia;
+    Private $Valor_Unidad;
 
     /**
      * Productos constructor.
+     * @param $idProducto
      * @param $Codigo
      * @param $Unidades
      * @param $Referencia
-     * @param $valor_Unidad
+     * @param $Valor_Unidad
      */
-    public function __construct($Codigo, $Unidades, $Referencia, $valor_Unidad)
+    public function __construct($idProducto, $Codigo, $Unidades, $Referencia, $Valor_Unidad)
     {
-        $this->Codigo = $Codigo;
-        $this->Unidades = $Unidades;
-        $this->Referencia = $Referencia;
-        $this->valor_Unidad = $valor_Unidad;
+        $this->idProducto = $idProducto['idProducto'];
+        $this->Codigo = $Codigo['Codigo'];
+        $this->Unidades = $Unidades['Unidades'];
+        $this->Referencia = $Referencia['Referencia'];
+        $this->Valor_Unidad = $Valor_Unidad['Valor_Unidad'];
+    }
+
+    /* Metodo destructor cierra la conexion. */
+    function __destruct() {
+        $this->Disconnect();
+    }
 
 
+    /**
+     * @return mixed
+     */
+    public function getIdProducto()
+    {
+        return $this->idProducto;
     }
 
     /**
@@ -37,27 +52,11 @@ class Productos
     }
 
     /**
-     * @param mixed $Codigo
-     */
-    public function setCodigo($Codigo): void
-    {
-        $this->Codigo = $Codigo;
-    }
-
-    /**
      * @return mixed
      */
     public function getUnidades()
     {
         return $this->Unidades;
-    }
-
-    /**
-     * @param mixed $Unidades
-     */
-    public function setUnidades($Unidades): void
-    {
-        $this->Unidades = $Unidades;
     }
 
     /**
@@ -69,153 +68,72 @@ class Productos
     }
 
     /**
-     * @param mixed $Referencia
-     */
-    public function setReferencia($Referencia): void
-    {
-        $this->Referencia = $Referencia;
-    }
-
-    /**
      * @return mixed
      */
     public function getValorUnidad()
     {
-        return $this->valor_Unidad;
+        return $this->Valor_Unidad;
     }
 
-    /**
-     * @param mixed $valor_Unidad
-     */
-    public function setValorUnidad($valor_Unidad): void
+    protected function store()
     {
-        $this->valor_Unidad = $valor_Unidad;
+        $this->insertRow("INSERT INTO weber.usuarios VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array(
+                $this->idProducto,
+                $this->Codigo,
+                $this->Unidades,
+                $this->Referencia,
+                $this->Valor_Unidad,
+            )
+        );
+        $this->Disconnect();
     }
 
-    public function MostarDatos()
+
+    protected function update()
     {
-        echo "<H4>Los datos del persona son: </H4>";
-        echo "<ul>";
-        echo   "<li><strong>Codigo: </strong>".$this->getRol()."</li>";
-        echo   "<li><strong>Unidades: </strong>".$this->getNombre_Documento()."</li>";
-        echo   "<li><strong>Referencia: </strong>".$this->getNumeroDocumento()."</li>";
-        echo   "<li><strong>Valor_Unidad: </strong>".$this->getNombre()."</li>";
-        echo "</ul>";
+        $this->updateRow("UPDATE weber.usuarios SET nombres = ?, apellidos = ?, tipo_documento = ?, documento = ?, telefono = ?, direccion = ?, user = ?, password = ?, rol = ?, estado = ? WHERE id = ?", array(
+                $this->idProducto,
+                $this->Codigo,
+                $this->Unidades,
+                $this->Referencia,
+                $this->Valor_Unidad,
 
+            )
+        );
+        $this->Disconnect();
     }
 
-
-
-    public $isConnected;
-    protected $datab;
-    private $username = "weber";
-    private $password = "weber2019";
-    private $host = "localhost";
-    private $driver = "mysql";
-    private $dbname = "weber";
-
-    # métodos abstractos para ABM de clases que hereden
-    abstract protected static function search($query);
-
-    abstract protected static function getAll();
-
-    abstract protected static function searchForId($id);
-
-    abstract protected function store();
-
-    abstract protected function update();
-
-    abstract protected function deleted($id);
-
-
-    public function __construct()
+    protected function deleted($id)
     {
-        $this->isConnected = true;
-        try {
-            $this->datab = new PDO(
-                ($this->driver != "sqlsrv") ?
-                    "$this->driver:host={$this->host};dbname={$this->dbname};charset=utf8" :
-                    "$this->driver:Server=$this->host;Database=$this->dbname",
-                $this->username, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')
-            );
-            $this->datab->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->datab->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            $this->datab->setAttribute(PDO::ATTR_PERSISTENT, true);
-        }catch(PDOException $e) {
-            $this->isConnected = false;
-            throw new Exception($e->getMessage());
+        // TODO: Implement deleted() method.
+    }
+
+    protected static function search($query)
+    {
+        $arrUsuarios = array();
+        $tmp = new Usuarios();
+        $getrows = $tmp->getRows($query);
+
+        foreach ($getrows as $valor) {
+            $Usuario = new Usuarios();
+            $Usuario->id = $valor['id'];
+            $Usuario->nombres = $valor['nombres'];
+            $Usuario->apellidos = $valor['apellidos'];
+            $Usuario->tipo_documento = $valor['tipo_documento'];
+            $Usuario->documento = $valor['documento'];
+            $Usuario->telefono = $valor['telefono'];
+            $Usuario->direccion = $valor['direccion'];
+            $Usuario->user = $valor['user'];
+            $Usuario->password = $valor['password'];
+            $Usuario->rol = $valor['rol'];
+            $Usuario->estado = $valor['estado'];
+            $Usuario->Disconnect();
+            array_push($arrUsuarios, $Usuario);
         }
+        $tmp->Disconnect();
+        return $arrUsuarios;
     }
 
-    //disconnecting from database
-    //$database->Disconnect();
-    public function Disconnect(){
-        $this->datab = null;
-        $this->isConnected = false;
-    }
-
-    //Getting row
-    //$getrow = $database->getRow("SELECT email, username FROM users WHERE username =?", array("yusaf"));
-    public function getRow($query, $params=array()){
-        try{
-            $stmt = $this->datab->prepare($query);
-            $stmt->execute($params);
-            return $stmt->fetch();
-        }catch(PDOException $e){
-            throw new Exception($e->getMessage());
-        }
-    }
-
-    //Getting multiple rows
-    //$getrows = $database->getRows("SELECT id, username FROM users");
-    public function getRows($query, $params=array()){
-        try{
-            $stmt = $this->datab->prepare($query);
-            $stmt->execute($params);
-            return $stmt->fetchAll();
-        }catch(PDOException $e){
-            throw new Exception($e->getMessage());
-        }
-    }
-
-    //Getting last id insert
-    //$getrows = $database->getLastId();
-    public function getLastId(){
-        try{
-            return $this->datab->lastInsertId();
-        }catch(PDOException $e){
-            throw new Exception($e->getMessage());
-        }
-    }
-
-    //inserting un campo
-    //$insertrow = $database ->insertRow("INSERT INTO users (username, email) VALUES (?, ?)", array("Diego", "yusaf@email.com"));
-    public function insertRow($query, $params){
-        try{
-            if (is_null($this->datab)){
-                $this->__construct();
-            }
-            $stmt = $this->datab->prepare($query);
-            return $stmt->execute($params);
-        }catch(PDOException $e){
-            throw new Exception($e->getMessage());
-        }
-    }
-
-    //updating existing row
-    //$updaterow = $database->updateRow("UPDATE users SET username = ?, email = ? WHERE id = ?", array("yusafk", "yusafk@email.com", "1"));
-    public function updateRow($query, $params){
-        return $this->insertRow($query, $params);
-    }
-
-    //delete a row
-    //$deleterow = $database->deleteRow("DELETE FROM users WHERE id = ?", array("1"));
-    public function deleteRow($query, $params){
-        return $this->insertRow($query, $params);
-    }
 
 
 }
-
-
-
