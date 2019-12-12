@@ -6,9 +6,9 @@ use App\Modelos\Persona;
 
 if(!empty($_GET['action'])){
     UsuariosController::main($_GET['action']);
-}else{
+}else {
     echo "No se encontro ninguna accion...";
-
+}
 
 class PersonaController
 {
@@ -17,7 +17,7 @@ class PersonaController
     {
         if ($action == "crear") {
             PersonaController::crear();
-        } else if ($action == "editar") {
+        }/* else if ($action == "editar") {
            PersonaController::editar();
         } else if ($action == "buscarID") {
             PersonaController::buscarID($_REQUEST['idPersona']);
@@ -29,7 +29,7 @@ class PersonaController
          PersonaController::login();
         }else if($action == "cerrarSession"){
             PersonaController::cerrarSession();
-        }
+        }*/
 
     }
 
@@ -60,7 +60,7 @@ class PersonaController
         }
     }
 
-    public static function personaIsInArray($idPersona, $ArrPersonas)
+    /*public static function personaIsInArray($idPersona, $ArrPersonas)
     {
         if (count($ArrPersonas) > 0) {
             foreach ($ArrPersonas as $Persona) {
@@ -255,6 +255,6 @@ class PersonaController
     }
 
 
-}
+}*/
 
 }

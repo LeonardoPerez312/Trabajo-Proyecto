@@ -9,7 +9,7 @@
 
 <!-- Site wrapper -->
 <div class="wrapper">
-
+    <?php require("../../partials/navbar_customization.php"); ?>
 
     <?php require("../../partials/sliderbar_main_menu.php"); ?>
 
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="<?= $baseURL; ?>/Vistas/"></a></li>
+                            <li class="breadcrumb-item"><a href="<?= $baseURL; ?>/Vistas/">WebER</a></li>
                             <li class="breadcrumb-item active">Inicio</li>
                         </ol>
                     </div>

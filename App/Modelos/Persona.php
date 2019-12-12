@@ -4,12 +4,12 @@
 namespace App\Modelos;
 
 
-class Persona
+class Persona extends db_abstract_class
 {
   private $idPersona;
   private $Rol;
   private $Nombre_Documento;
-  private Numero_Documento;
+  private $Numero_Documento;
   private $Nombre;
   private $apellidos;
   private $Celular;
@@ -227,4 +227,8 @@ class Persona
     }
 
 
+    protected function deleted($id)
+    {
+        // TODO: Implement deleted() method.
+    }
 }

@@ -4,7 +4,7 @@
 namespace App\Modelos;
 
 
-class Bicicleta extends db_abstract_class
+class Bicicleta
 {
     private $idBicicletas;
     private $Referencia;
@@ -96,25 +96,9 @@ class Bicicleta extends db_abstract_class
         return $this->Fecha;
     }
 
-    protected function store()
-    {
-        $this->insertRow("INSERT INTO weber.usuarios VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array(
-                $this->idBicicletas,
-                $this->Referencia,
-                $this->Unidades,
-                $this->Precio,
-                $this->Color,
-                $this->Modelo,
-                $this->Fecha,
-            )
-        );
-        $this->Disconnect();
-    }
-
-
     protected function update()
     {
-        $this->updateRow("UPDATE weber.Bicicletas SET  = ?, idBicicletas = ?, Referencia = ?, Unidades = ?, Precio = ?, Color = ?, Modelo =?, Fecha =? user = ?, password = ?, rol = ?, estado = ? WHERE id = ?", array(
+        $this->updateRow("UPDATE weber.usuarios SET nombres = ?, apellidos = ?, tipo_documento = ?, documento = ?, telefono = ?, direccion = ?, user = ?, password = ?, rol = ?, estado = ? WHERE id = ?", array(
                 $this->idBicicletas,
                 $this->Referencia,
                 $this->Unidades,
@@ -127,19 +111,21 @@ class Bicicleta extends db_abstract_class
         );
         $this->Disconnect();
     }
+
     protected function deleted($id)
     {
         // TODO: Implement deleted() method.
     }
+
     protected static function search($query)
     {
         $arrUsuarios = array();
-        $tmp = new Usuarios();
+        $tmp = new Bicicleta();
         $getrows = $tmp->getRows($query);
 
         foreach ($getrows as $valor) {
-            $Usuario = new Usuarios();
-            $Usuario->idBicicleta = $valor['idBicicletas'];
+            $Usuario = new Bicicleta();
+            $Usuario->idBicicletas = $valor['idBicicleta'];
             $Usuario->Referencia = $valor['Referencia'];
             $Usuario->Unidades = $valor['Unidades'];
             $Usuario->Precio = $valor['Precio'];
@@ -155,11 +141,10 @@ class Bicicleta extends db_abstract_class
 
     protected static function searchForId($id)
     {
-        $Usuario = new Usuarios();
+        $Usuario = new Bicicleta();
         if ($id > 0){
             $getrow = $Usuario->getRow("SELECT * FROM weber.usuarios WHERE id =?", array($id));
             $Usuario->idBicicletas = $getrow['idBicicleta'];
-            $Usuario->Referencia = $getrow['Referencia'];
             $Usuario->Unidades = $getrow['Unidades'];
             $Usuario->Precio = $getrow['Precio'];
             $Usuario->Color = $getrow['Color'];
@@ -178,6 +163,7 @@ class Bicicleta extends db_abstract_class
     {
         return Usuarios::buscar("SELECT * FROM weber.usuarios");
     }
+
 
 
 
