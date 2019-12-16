@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Crear un Nuevo Usuario</h1>
+                        <h1>CREAR NUEVA VENTA</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -53,11 +53,11 @@
             <!-- Horizontal Form -->
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Ventas</h3>
+                    <h3 class="card-title">VENTAS</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../app/Controladores/VentasController.php?action=crear">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="nombres" class="col-sm-2 col-form-label">Valor</label>
@@ -74,7 +74,7 @@
                         <div class="form-group row">
                             <label for="documento" class="col-sm-2 col-form-label">Fecha</label>
                             <div class="col-sm-10">
-                                <input required type="number" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese  Fecha">
+                                <input required type="date" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese  Fecha">
                             </div>
                         </div>
 

@@ -35,6 +35,24 @@
         <!-- Main content -->
         <section class="content">
 
+            <?php if(!empty($_GET['respuesta']) && !empty($_GET['action'])){ ?>
+                <?php if ($_GET['respuesta'] == "correcto"){ ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-check"></i> Correcto!</h5>
+                        <?php if ($_GET['action'] == "create"){ ?>
+                            El usuario ha sido creado con exito!
+                        <?php }else if($_GET['action'] == "update"){ ?>
+                            Los datos del usuario han sido actualizados correctamente!
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+
+
+            <!-- Main content -->
+        <section class="content">
+
             <?php if(!empty($_GET['respuesta'])){ ?>
                 <?php if ($_GET['respuesta'] == "correcto"){ ?>
                     <div class="alert alert-success alert-dismissible">
@@ -48,8 +66,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Título Modulo</h3>
-
+                    <h3 class="card-title">Gestionar Usuarios</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fas fa-minus"></i></button>
@@ -58,7 +75,19 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    Contenido del modulo
+                    <div class="row">
+                        <div class="col-auto mr-auto"></div>
+                        <div class="col-auto">
+                            <a role="button" href="create.php" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                <i class="fas fa-plus"></i> Crear Usuario
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Contenido del modulo
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

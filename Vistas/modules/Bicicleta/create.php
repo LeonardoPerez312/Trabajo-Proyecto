@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Crear un Nuevo Usuario</h1>
+                        <h1>CREAR NUEVA BICICLETA</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -51,60 +51,61 @@
             <?php } ?>
 
             <!-- Horizontal Form -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../app/Controladores/BicicletasController.php?action=crear">
             <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">Bicicleta</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-
-                    <div class="form-group row">
-                        <label for="documento" class="col-sm-2 col-form-label">Referencia</label>
-                        <div class="col-sm-10">
-                            <input required type="number" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese la referencia">
-                        </div>
-                    </div>
-
                 <div class="form-group row">
-                    <label for="documento" class="col-sm-2 col-form-label">Unidades</label>
+                    <label for="apellidos" class="col-sm-2 col-form-label">Referencia</label>
                     <div class="col-sm-10">
-                        <input required type="number" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese  Unidades">
+                        <input required type="text" class="form-control" id="Referencia" name="Referencia" placeholder="Ingrese Referencia">
                     </div>
                 </div>
 
 
-
+                <div class="form-group row">
+                    <label for="documento" class="col-sm-2 col-form-label">Unidades</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="Unidades" name="Unidades" placeholder="Ingrese Unidades">
+                    </div>
+                </div>
 
 
                 <div class="form-group row">
                             <label for="documento" class="col-sm-2 col-form-label">Precio</label>
                             <div class="col-sm-10">
-                                <input required type="number" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese Precio">
+                                <input  type="number" class="form-control" id="Precio" name="Precio" placeholder="Ingrese Precio">
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="telefono" class="col-sm-2 col-form-label">Color</label>
-                            <div class="col-sm-10">
-                                <input required type="number" max="11" min="6" class="form-control" id="telefono" name="telefono" placeholder="Ingrese Color">
-                            </div>
-                        </div>
-
-                    <div class="form-group row">
-                        <label for="documento" class="col-sm-2 col-form-label">Modelo</label>
-                        <div class="col-sm-10">
-                            <input required type="number" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese Modelo">
-                        </div>
-
+                <div class="form-group row">
+                    <label for="apellidos" class="col-sm-2 col-form-label">Color</label>
+                    <div class="col-sm-10">
+                        <input required type="text" class="form-control" id="Color" name="Color" placeholder="Ingrese Color">
                     </div>
-                        <div class="form-group row">
-                            <label for="direccion" class="col-sm-2 col-form-label">Fecha</label>
-                            <div class="col-sm-10">
-                                <input required type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese Fecha">
-                            </div>
-                        </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Modelo" class="col-sm-2 col-form-label">MODELO</label>
+                    <div class="col-sm-10">
+                        <select id="Modelo" name="Modelo" class="custom-select">
+                            <option value="C.C">Cicla Para Niño</option>
+                            <option value="T.I">Cicla Para Ciclo Montaña</option>
+                            <option value="R.C"></option>
+                        </select>
                     </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="documento" class="col-sm-2 col-form-label">Fecha</label>
+                    <div class="col-sm-10">
+                        <input  class="form-control" id="Fecha" name="Fecha" placeholder="Ingrese  Fecha">
+                    </div>
+                </div>
 
 
 

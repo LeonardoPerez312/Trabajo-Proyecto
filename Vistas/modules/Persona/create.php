@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Crear un Nuevo Usuario</h1>
+                        <h1>CREAR NUEVO USUARIO</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -53,15 +53,15 @@
             <!-- Horizontal Form -->
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Productos</h3>
+                    <h3 class="card-title">PERSONA</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../app/Controladores/PersonaController.php?action=crear">
                     <div class="form-group row">
                         <label for="tipo_documento" class="col-sm-2 col-form-label">Rol</label>
                         <div class="col-sm-10">
-                            <select id="tipo_documento" name="tipo_documento" class="custom-select">
+                            <select id="Rol" name="Rol" class="custom-select">
                                 <option value="C.C">Administrador</option>
                                 <option value="T.I">Cliente</option>
                                 <option value="R.C">Proveedor</option>
@@ -84,33 +84,33 @@
                     <div class="form-group row">
                         <label for="documento" class="col-sm-2 col-form-label">Numero Documento</label>
                         <div class="col-sm-10">
-                            <input required type="number" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese su documento">
+                            <input  class="form-control" id="Numero_documento" name="Numero_documento" placeholder="Ingrese su documento">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="documento" class="col-sm-2 col-form-label">Nombre</label>
+                        <label for="apellidos" class="col-sm-2 col-form-label">Nombres</label>
                         <div class="col-sm-10">
-                            <input required type="number" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese su documento">
+                            <input required type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese sus Nombres">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="telefono" class="col-sm-2 col-form-label">Apellidos</label>
+                        <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
                         <div class="col-sm-10">
-                            <input required type="number" max="11" min="6" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su telefono">
+                            <input required type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese sus apellidos">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="documento" class="col-sm-2 col-form-label">Celular</label>
                         <div class="col-sm-10">
-                            <input required type="number" max="11" min="7" class="form-control" id="documento" name="documento" placeholder="Ingrese su documento">
+                            <input  class="form-control" id="documento" name="documento" placeholder="Ingrese su Celular">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="direccion" class="col-sm-2 col-form-label">Correo</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su direccion">
+                            <input required type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su Correo">
                         </div>
                     </div>
             </div>

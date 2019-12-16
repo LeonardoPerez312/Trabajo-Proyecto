@@ -5,7 +5,7 @@ namespace App\Controladores;
 use App\Modelos\Persona;
 
 if(!empty($_GET['action'])){
-    UsuariosController::main($_GET['action']);
+    PersonaController::main($_GET['action']);
 }else {
     echo "No se encontro ninguna accion...";
 }
@@ -16,7 +16,7 @@ class PersonaController
     static function main($action)
     {
         if ($action == "crear") {
-            PersonaController::crear();
+            PersonaController::create();
         }/* else if ($action == "editar") {
            PersonaController::editar();
         } else if ($action == "buscarID") {
@@ -34,7 +34,7 @@ class PersonaController
     }
 
 
-    static public function crear()
+    static public function create()
     {
         try {
 
@@ -52,7 +52,7 @@ class PersonaController
             $arrayUsuario['rol'] = 'Cliente';
             $arrayUsuario['estado'] = 'Activo';
 
-            $Usuario = new Usuarios ($arrayUsuario);
+            $Usuario = new Persona ($arrayUsuario);
             $Usuario->create();
             header("Location: ../Vista/modules/persona/create.php?respuesta=correcto");
         } catch (Exception $e) {

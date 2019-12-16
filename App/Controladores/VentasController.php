@@ -2,9 +2,9 @@
 
 
 namespace App\Controladores;
-
+use App\Modelos\Ventas;
 if(!empty($_GET['action'])){
-    UsuariosController::main($_GET['action']);
+    VentasController::main($_GET['action']);
 }else{
     echo "No se encontro ninguna accion...";
 }
@@ -14,7 +14,7 @@ class VentasController
     static function main($action)
     {
         if ($action == "crear") {
-            PersonaController::crear();
+            PersonaController::create();
         }/* else if ($action == "editar") {
            PersonaController::editar();
         } else if ($action == "buscarID") {
@@ -37,20 +37,13 @@ class VentasController
         try {
 
             $arrayUsuario = array();
-            $arrayUsuario['idPersona'] = $_POST['idPersona'];
-            $arrayUsuario['Rol'] = $_POST['Rol'];
-            $arrayUsuario['Nombre_Documento'] = $_POST['Nombre_Documento'];
-            $arrayUsuario['Numero_Documento'] = $_POST['Numero_Documento'];
-            $arrayUsuario['Nombre'] = $_POST['Nombre'];
-            $arrayUsuario['Apellidos'] = $_POST['Apellidos'];
-            $arrayUsuario['Celular'] = $_POST['Celular'];
-            $arrayUsuario['Correo'] = $_POST['Correo'];
-            $arrayUsuario['user'] = '';
-            $arrayUsuario['password'] = '';
-            $arrayUsuario['rol'] = 'Cliente';
-            $arrayUsuario['estado'] = 'Activo';
+            $arrayUsuario['idVenta'] = $_POST['idVenta'];
+            $arrayUsuario['Valor'] = $_POST['Valor'];
+            $arrayUsuario['Forma_pago'] = $_POST['Forma_pago'];
+            $arrayUsuario['Fecha'] = $_POST['fecha'];
 
-            $Usuario = new Usuarios ($arrayUsuario);
+
+            $Usuario = new Ventas ($arrayUsuario);
             $Usuario->create();
             header("Location: ../Vista/modules/persona/create.php?respuesta=correcto");
         } catch (Exception $e) {

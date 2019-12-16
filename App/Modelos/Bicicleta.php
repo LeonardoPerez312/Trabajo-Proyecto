@@ -98,7 +98,7 @@ class Bicicleta
 
     protected function update()
     {
-        $this->updateRow("UPDATE weber.usuarios SET nombres = ?, apellidos = ?, tipo_documento = ?, documento = ?, telefono = ?, direccion = ?, user = ?, password = ?, rol = ?, estado = ? WHERE id = ?", array(
+        $this->updateRow("UPDATE weber.usuarios SET idBicicleta = ?,Referencia = ?,Unidades = ?,Marca = ?,Precio = ?,Color = ?,Modelo = ?,Fecha = ? WHERE id = ?", array(
                 $this->idBicicletas,
                 $this->Referencia,
                 $this->Unidades,
@@ -143,7 +143,7 @@ class Bicicleta
     {
         $Usuario = new Bicicleta();
         if ($id > 0){
-            $getrow = $Usuario->getRow("SELECT * FROM weber.usuarios WHERE id =?", array($id));
+            $getrow = $Usuario->getRow("SELECT * FROM weber.Bicicleta WHERE id =?", array($id));
             $Usuario->idBicicletas = $getrow['idBicicleta'];
             $Usuario->Unidades = $getrow['Unidades'];
             $Usuario->Precio = $getrow['Precio'];
@@ -161,7 +161,7 @@ class Bicicleta
 
     protected static function getAll()
     {
-        return Usuarios::buscar("SELECT * FROM weber.usuarios");
+        return Usuarios::buscar("SELECT * FROM weber.Bicicleta");
     }
 
 
