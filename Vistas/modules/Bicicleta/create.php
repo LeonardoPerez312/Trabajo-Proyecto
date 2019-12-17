@@ -51,7 +51,7 @@
             <?php } ?>
 
             <!-- Horizontal Form -->
-            <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../app/Controladores/BicicletasController.php?action=crear">
+            <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../App/Controladores/BicicletasController.php?action=crear">
             <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">Bicicleta</h3>

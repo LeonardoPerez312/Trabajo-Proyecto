@@ -3,8 +3,9 @@
 
 namespace App\Modelos;
 
+require('db_abstract_class.php');
 
-class Bicicleta
+class Bicicleta extends db_abstract_class
 {
     private $idBicicletas;
     private $Referencia;
@@ -13,7 +14,7 @@ class Bicicleta
     private $Color;
     private $Modelo;
     private $Fecha;
-
+    private $Marca;
     /**
      * Bicicleta constructor.
      * @param $idBicicletas
@@ -24,20 +25,87 @@ class Bicicleta
      * @param $Modelo
      * @param $Fecha
      */
-    public function __construct($idBicicletas, $Referencia, $Unidades, $Precio, $Color, $Modelo, $Fecha)
+    public function __construct($bicicleta = array())
     {
-        $this->idBicicletas = $idBicicletas['idBicicleta'];
-        $this->Referencia = $Referencia['Referencia'];
-        $this->Unidades = $Unidades['Unidades'];
-        $this->Precio = $Precio['Precio'];
-        $this->Color = $Color['Color'];
-        $this->Modelo = $Modelo['Modelo'];
-        $this->Fecha = $Fecha;['Fecha'];
+        parent::__construct();
+        $this->idBicicletas = $bicicleta['idBicicleta'] ?? null;
+        $this->Referencia = $bicicleta['Referencia'] ?? null;
+        $this->Unidades = $bicicleta['Unidades'] ?? null;
+        $this->Precio = $bicicleta['Precio'] ?? null;
+        $this->Color = $bicicleta['Color'] ?? null;
+        $this->Modelo = $bicicleta['Modelo'] ?? null;
+        $this->Fecha = $bicicleta['Fecha'] ?? null;
+        $this->Marca = $bicicleta['Marca'] ?? null;
+
+    }
+
+    /**
+     * @return bool
+     */
+    public function isConnected(): bool
+    {
+        return $this->isConnected;
+    }
+
+    /**
+     * @return PDO
+     */
+    public function getDatab(): PDO
+    {
+        return $this->datab;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHost(): string
+    {
+        return $this->host;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDriver(): string
+    {
+        return $this->driver;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDbname(): string
+    {
+        return $this->dbname;
     }
 
     /* Metodo destructor cierra la conexion. */
     function __destruct() {
         $this->Disconnect();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMarca()
+    {
+        return $this->Marca;
     }
 
     /**
@@ -165,7 +233,8 @@ class Bicicleta
     }
 
 
-
-
-
+    protected function store()
+    {
+        // TODO: Implement store() method.
+    }
 }

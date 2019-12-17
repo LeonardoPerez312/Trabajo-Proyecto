@@ -19,6 +19,14 @@ class Persona extends db_abstract_class
   private $estado;
 
     /**
+     * @return mixed
+     */
+    public function getNumeroDocumento()
+    {
+        return $this->Numero_Documento;
+    }
+
+    /**
      * Persona constructor.
      * @param $idPersona
      * @param $Rol
@@ -31,19 +39,68 @@ class Persona extends db_abstract_class
      * @param $password
      * @param $estado
      */
-    public function __construct($idPersona, $Rol, $Nombre_Documento, $Nombre, $apellidos, $Celular, $Correo, $user, $password, $estado)
+    public function __construct($persona = array ())
     {
-        $this->idPersona = $idPersona['idPersona'];
-        $this->Rol = $Rol['Rol'];
-        $this->Nombre_Documento['Nombre Documento'];
-        $this->Nombre_Documento['Numero Documento'];
-        $this->Nombre = $Nombre['Nombres'];
-        $this->apellidos = $apellidos['Apellidos'];
-        $this->Celular = $Celular['Celular'];
-        $this->Correo = $Correo['Correo'];
-        $this->user = $user['user'];
-        $this->password = $password['password'];
-        $this->estado = $estado['estado'];
+        $this->idPersona = $persona['idPersona'];
+        $this->Rol = $persona['Rol'];
+        $this->Nombre_Documento = $persona ['Nombre Documento'];
+        $this->Numero_Documento = $persona['Numero Documento'];
+        $this->Nombre = $persona['Nombres'];
+        $this->apellidos = $persona['Apellidos'];
+        $this->Celular = $persona['Celular'];
+        $this->Correo = $persona['Correo'];
+        $this->user = $persona['user'];
+        $this->password = $persona['password'];
+        $this->estado = $persona['estado'];
+
+    }
+
+    /**
+     * @return bool
+     */
+    public function isConnected(): bool
+    {
+        return $this->isConnected;
+    }
+
+    /**
+     * @return PDO
+     */
+    public function getDatab(): PDO
+    {
+        return $this->datab;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHost(): string
+    {
+        return $this->host;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDriver(): string
+    {
+        return $this->driver;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDbname(): string
+    {
+        return $this->dbname;
     }
 
 
@@ -76,6 +133,7 @@ class Persona extends db_abstract_class
     {
         return $this->Nombre_Documento;
     }
+
 
     /**
      * @return mixed

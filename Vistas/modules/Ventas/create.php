@@ -57,7 +57,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../app/Controladores/VentasController.php?action=crear">
+                <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../App/Controladores/VentasController.php?action=crear">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="nombres" class="col-sm-2 col-form-label">Valor</label>

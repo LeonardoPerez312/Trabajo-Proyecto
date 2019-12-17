@@ -57,7 +57,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../app/Controladores/PersonaController.php?action=crear">
+                <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../App/Controladores/PersonaController.php?action=crear">
                     <div class="form-group row">
                         <label for="tipo_documento" class="col-sm-2 col-form-label">Rol</label>
                         <div class="col-sm-10">
@@ -69,9 +69,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="tipo_documento" class="col-sm-2 col-form-label">Tipo Documento</label>
+                        <label for="tipo_documento" class="col-sm-2 col-form-label">Nombre Documento</label>
                         <div class="col-sm-10">
-                            <select id="tipo_documento" name="tipo_documento" class="custom-select">
+                            <select id="Nombre_Documento" name="Nombre_Documento" class="custom-select">
                                 <option value="C.C">Cedula de Ciudadania</option>
                                 <option value="T.I">Tarjeta de Identidad</option>
                                 <option value="R.C">Registro Civil</option>
@@ -91,26 +91,26 @@
                     <div class="form-group row">
                         <label for="apellidos" class="col-sm-2 col-form-label">Nombres</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese sus Nombres">
+                            <input required type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Ingrese sus Nombres">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese sus apellidos">
+                            <input required type="text" class="form-control" id="Apellidos" name="Apellidos" placeholder="Ingrese sus apellidos">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="documento" class="col-sm-2 col-form-label">Celular</label>
                         <div class="col-sm-10">
-                            <input  class="form-control" id="documento" name="documento" placeholder="Ingrese su Celular">
+                            <input  class="form-control" id="Celular" name="Celular" placeholder="Ingrese su Celular">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="direccion" class="col-sm-2 col-form-label">Correo</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su Correo">
+                            <input required type="text" class="form-control" id="Correo" name="Correo" placeholder="Ingrese su Correo">
                         </div>
                     </div>
             </div>
@@ -121,7 +121,7 @@
                 <button type="submit" class="btn btn-default float-right">Cancelar</button>
             </div>
             <!-- /.card-footer -->
-            </form>
+            </section>
     </div>
     <!-- /.card -->
     </section>

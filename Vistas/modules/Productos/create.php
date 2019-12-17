@@ -57,30 +57,30 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../app/Controladores/ProductosController.php?action=crear">
+                <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../App/Controladores/ProductosController.php?action=crear">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="nombres" class="col-sm-2 col-form-label">Codigo</label>
                             <div class="col-sm-10">
-                                <input required type="text" class="form-control" id="nombres" name="nombres" placeholder="Ingrese codigo">
+                                <input required type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Ingrese codigo">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="apellidos" class="col-sm-2 col-form-label">Unidades</label>
                             <div class="col-sm-10">
-                                <input required type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese Unidades">
+                                <input required type="text" class="form-control" id="Unidades" name="Unidades" placeholder="Ingrese Unidades">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="apellidos" class="col-sm-2 col-form-label">Referencia</label>
                             <div class="col-sm-10">
-                                <input required type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese la Referencia">
+                                <input required type="text" class="form-control" id="Referencia" name="Referencia" placeholder="Ingrese la Referencia">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="apellidos" class="col-sm-2 col-form-label">Valor Unidad</label>
                             <div class="col-sm-10">
-                                <input required type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Valor Unidades">
+                                <input required type="text" class="form-control" id="Valor_unidad" name="Valor_unui" placeholder="Valor Unidades">
                             </div>
                         </div>
 

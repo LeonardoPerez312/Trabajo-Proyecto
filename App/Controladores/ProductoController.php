@@ -2,6 +2,7 @@
 
 
 namespace App\Controladores;
+use App\Controllers\UsuariosController;
 use App\Modelos\Productos;
 
 if(!empty($_GET['action'])){
@@ -14,20 +15,22 @@ class ProductoController
 {
     static function main($action)
     {
-        if ($action == "crear") {
-            PersonaController::create();
-        }/* else if ($action == "editar") {
-           PersonaController::editar();
-        } else if ($action == "buscarID") {
-            PersonaController::buscarID($_REQUEST['idPersona']);
-        } else if ($action == "ActivarUsuario") {
-           PersonaController::ActivarPersona();
-        } else if ($action == "InactivarUsuario") {
-           PersonaController::InactivarPersona();
-        }else if ($action == "login"){
-         PersonaController::login();
+        if ($action == "create") {
+            ProductoController::create();
+        } else if ($action == "edit") {
+            ProductoController::edit();
+        } else if ($action == "searchForID") {
+            ProductoController::searchForID($_REQUEST['idPersona']);
+        } else if ($action == "searchAll") {
+            UsuariosController::getAll();
+        } else if ($action == "activate") {
+            UsuariosController::activate();
+        } else if ($action == "inactivate") {
+            UsuariosController::inactivate();
+        }/*else if ($action == "login"){
+            UsuariosController::login();
         }else if($action == "cerrarSession"){
-            PersonaController::cerrarSession();
+            UsuariosController::cerrarSession();
         }*/
 
     }
