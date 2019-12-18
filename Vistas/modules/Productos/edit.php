@@ -1,8 +1,8 @@
 <?php
 require("../../partials/routes.php");
-require("../../../app/Controllers/UsuariosController.php");
+require("../../../App/Controllers/ProductoController.php");
 
-use App\Controllers\UsuariosController; ?>
+use App\Controllers\ProductoController; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,6 @@ use App\Controllers\UsuariosController; ?>
 
 <!-- Site wrapper -->
 <div class="wrapper">
-    <?php require("../../partials/navbar_customization.php"); ?>
 
     <?php require("../../partials/sliderbar_main_menu.php"); ?>
 

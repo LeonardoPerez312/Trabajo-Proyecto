@@ -1,8 +1,8 @@
 <?php
 require("../../partials/routes.php");
-require("../../../app/Controllers/UsuariosController.php");
+require("../../../App/Controllers/VentasController.php");
 
-use App\Controllers\UsuariosController; ?>
+use App\Controllers\VentasController; ?>
 <!DOCTYPE html>
 <html>
 <head>

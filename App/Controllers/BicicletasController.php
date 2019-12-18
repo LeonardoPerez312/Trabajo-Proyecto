@@ -1,38 +1,36 @@
 <?php
 
 
-namespace App\Controladores;
-use App\Controllers\UsuariosController;
-use App\Modelos\Productos;
+namespace App\Controllers;
+require(__DIR__.'/../Modelos/Bicicleta.php');
+use App\Modelos\Bicicleta;
 
 if(!empty($_GET['action'])){
-    ProductoController::main($_GET['action']);
-}else{
-    echo "No se encontro ninguna accion...";
+    BicicletasController::main($_GET['action']);
 }
 
-class ProductoController
+class BicicletasController
 {
+
     static function main($action)
     {
         if ($action == "create") {
-            ProductoController::create();
+            BicicletasController::create();
         } else if ($action == "edit") {
-            ProductoController::edit();
+            BicicletasController::edit();
         } else if ($action == "searchForID") {
-            ProductoController::searchForID($_REQUEST['idPersona']);
+            BicicletasController::searchForID($_REQUEST['idBicicleta']);
         } else if ($action == "searchAll") {
-            UsuariosController::getAll();
+            BicicletasController::getAll();
         } else if ($action == "activate") {
-            UsuariosController::activate();
+            BicicletasController::activate();
         } else if ($action == "inactivate") {
-            UsuariosController::inactivate();
+            BicicletasController::inactivate();
         }/*else if ($action == "login"){
-            UsuariosController::login();
+            BicicletasController::login();
         }else if($action == "cerrarSession"){
-            UsuariosController::cerrarSession();
+            BicicletasController::cerrarSession();
         }*/
-
     }
 
 
@@ -40,21 +38,79 @@ class ProductoController
     {
         try {
 
-            $arrayUsuario = array();
-            $arrayUsuario['idProducto'] = $_POST['idProducto'];
-            $arrayUsuario['Codigo'] = $_POST['Codigo'];
-            $arrayUsuario['Unidades'] = $_POST['Unidades'];
-            $arrayUsuario['Referencia'] = $_POST['Referencia'];
-            $arrayUsuario['Valor_unidad'] = $_POST['Valor_unidad'];
-
-
-            $Usuario = new Productos ($arrayUsuario);
-            $Usuario->create();
-            header("Location: ../Vista/modules/persona/create.php?respuesta=correcto");
+            $arrayBicicleta = array();
+            $arrayBicicleta['Referencia'] = $_POST['Referencia'];
+            $arrayBicicleta['Unidades'] = $_POST['Unidades'];
+            $arrayBicicleta['Marca'] = $_POST['Marca'];
+            $arrayBicicleta['Precio'] = $_POST['Precio'];
+            $arrayBicicleta['Color'] = $_POST['Color'];
+            $arrayBicicleta['Modelo'] = $_POST['Modelo'];
+            $arrayBicicleta['Fecha'] = $_POST['Fecha'];
+            if(!Bicicleta::usuarioRegistrado($arrayBicicleta['Precio'])){
+                $Usuario = new Bicicleta ($arrayBicicleta);
+                if($Usuario->create()){
+                    header("Location: ../../Vistas/modules/bicicleta/index.php?respuesta=correcto");
+                }
+            }else{
+                header("Location: ../../Vistas/modules/bicicleta/create.php?respuesta=error&mensaje=Usuario ya registrado");
+            }
         } catch (Exception $e) {
-            header("Location: ../Vista/modules/persona/create.php?respuesta=error&mensaje=" . $e->getMessage());
+            header("Location: ../../Vistas/modules/bicicleta/create.php?respuesta=error&mensaje=" . $e->getMessage());
         }
     }
+
+    static public function edit (){
+        try {
+            $arrayBicicleta = array();
+            $arrayBicicleta['Referencia'] = $_POST['Referencia'];
+            $arrayBicicleta['Unidades'] = $_POST['Unidades'];
+            $arrayBicicleta['Marca'] = $_POST['Marca'];
+            $arrayBicicleta['Precio'] = $_POST['Precio'];
+            $arrayBicicleta['Modelo'] = $_POST['Modelo'];
+            $arrayBicicleta['Fecha'] = $_POST['Fecha'];
+
+
+            $user = new Bicicleta($arrayBicicleta);
+            $user->update();
+            header("Location: ../../Vistas/modules/bicicleta/show.php?id=".$user->getIdBicicletas()."&respuesta=correcto");
+        } catch (\Exception $e) {
+            //var_dump($e);
+            header("Location: ../../Vistas/modules/bicicleta/edit.php?respuesta=error&mensaje=".$e->getMessage());
+        }
+    }
+
+    static public function activate (){
+        try {
+            $ObjBicicleta = Bicicleta::searchForId($_GET['IdBicicleta']);
+            if($ObjBicicleta->update()){
+                header("Location: ../../Vistas/modules/bicicleta/index.php");
+            }else{
+                header("Location: ../../Vistas/modules/bicicleta/index.php?respuesta=error&mensaje=Error al guardar");
+            }
+        } catch (\Exception $e) {
+            //var_dump($e);
+            header("Location: ../../Vistas/modules/bicicleta/index.php?respuesta=error&mensaje=".$e->getMessage());
+        }
+    }
+
+    static public function searchForID ($id){
+        try {
+            return Bicicleta::searchForId($id);
+        } catch (\Exception $e) {
+            var_dump($e);
+            //header("Location: ../../Vista/modules/bicicleta/manager.php?respuesta=error");
+        }
+    }
+
+    static public function getAll (){
+        try {
+            return Bicicleta::getAll();
+        } catch (\Exception $e) {
+            var_dump($e);
+            //header("Location: ../Vista/modules/bicicleta/manager.php?respuesta=error");
+        }
+    }
+
 
     /*public static function personaIsInArray($idPersona, $ArrPersonas)
     {
@@ -252,6 +308,8 @@ class ProductoController
 
 
 }*/
+
+
 
 
 }

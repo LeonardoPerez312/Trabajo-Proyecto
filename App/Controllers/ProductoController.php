@@ -1,56 +1,132 @@
 <?php
 
 
-namespace App\Controladores;
-use App\Modelos\Ventas;
-if(!empty($_GET['action'])){
-    VentasController::main($_GET['action']);
-}else{
-    echo "No se encontro ninguna accion...";
-}
-class VentasController
-{
+namespace App\Controllers;
+use App\Modelos\Productos;
+use App\Models\Usuarios;
 
+
+if(!empty($_GET['action'])) {
+    ProductoController::main($_GET['action']);
+}
+
+class
+ProductoController
+{
     static function main($action)
     {
-        if ($action == "crear") {
-            PersonaController::create();
-        }/* else if ($action == "editar") {
-           PersonaController::editar();
-        } else if ($action == "buscarID") {
-            PersonaController::buscarID($_REQUEST['idPersona']);
-        } else if ($action == "ActivarUsuario") {
-           PersonaController::ActivarPersona();
-        } else if ($action == "InactivarUsuario") {
-           PersonaController::InactivarPersona();
-        }else if ($action == "login"){
-         PersonaController::login();
+        if ($action == "create") {
+            ProductoController::create();
+        } else if ($action == "edit") {
+            ProductoController::edit();
+        } else if ($action == "searchForID") {
+            ProductoController::searchForID($_REQUEST['idPersona']);
+        } else if ($action == "searchAll") {
+            ProductoController::getAll();
+        } else if ($action == "activate") {
+            ProductoController::activate();
+        } else if ($action == "inactivate") {
+            ProductoController::inactivate();
+        }/*else if ($action == "login"){
+            UsuariosController::login();
         }else if($action == "cerrarSession"){
-            PersonaController::cerrarSession();
+            UsuariosController::cerrarSession();
         }*/
 
     }
 
 
-    static public function crear()
+    static public function create()
     {
         try {
 
             $arrayUsuario = array();
-            $arrayUsuario['idVenta'] = $_POST['idVenta'];
-            $arrayUsuario['Valor'] = $_POST['Valor'];
-            $arrayUsuario['Forma_pago'] = $_POST['Forma_pago'];
-            $arrayUsuario['Fecha'] = $_POST['fecha'];
+            $arrayUsuario['idProducto'] = $_POST['idProducto'];
+            $arrayUsuario['Codigo'] = $_POST['Codigo'];
+            $arrayUsuario['Unidades'] = $_POST['Unidades'];
+            $arrayUsuario['Referencia'] = $_POST['Referencia'];
+            $arrayUsuario['Valor_unidad'] = $_POST['Valor_unidad'];
 
 
-            $Usuario = new Ventas ($arrayUsuario);
-            $Usuario->create();
-            header("Location: ../Vista/modules/persona/create.php?respuesta=correcto");
+            if(!Productos::ProductoController($arrayUsuario['Codigo'])){
+                $Usuario = new Productos ($arrayUsuario);
+                if($Usuario->create()){
+                    header("Location: ../../views/modules/usuarios/index.php?respuesta=correcto");
+                }
+            }else{
+                header("Location: ../../views/modules/usuarios/create.php?respuesta=error&mensaje=Usuario ya registrado");
+            }
         } catch (Exception $e) {
-            header("Location: ../Vista/modules/persona/create.php?respuesta=error&mensaje=" . $e->getMessage());
+            header("Location: ../../views/modules/usuarios/create.php?respuesta=error&mensaje=" . $e->getMessage());
         }
     }
 
+    static public function edit (){
+        try {
+            $arrayUsuario = array();
+            $arrayUsuario['idProducto'] = $_POST['idProducto'];
+            $arrayUsuario['Codigo'] = $_POST['Codigo'];
+            $arrayUsuario['Unidades'] = $_POST['Unidades'];
+            $arrayUsuario['Referencia'] = $_POST['Referencia'];
+            $arrayUsuario['Valor_Unidad'] = $_POST['Valor_unidad'];
+
+
+            $user = new Productos($arrayUsuario);
+            $user->update();
+
+            header("Location: ../../views/modules/usuarios/show.php?id=".$user->getId()."&respuesta=correcto");
+        } catch (\Exception $e) {
+            //var_dump($e);
+            header("Location: ../../views/modules/usuarios/edit.php?respuesta=error&mensaje=".$e->getMessage());
+        }
+    }
+
+    static public function activate (){
+        try {
+            $ObjUsuario = Productos::searchForId($_GET['Id']);
+            $ObjUsuario->setEstado("Activo");
+            if($ObjUsuario->update()){
+                header("Location: ../../views/modules/usuarios/index.php");
+            }else{
+                header("Location: ../../views/modules/usuarios/index.php?respuesta=error&mensaje=Error al guardar");
+            }
+        } catch (\Exception $e) {
+            //var_dump($e);
+            header("Location: ../../views/modules/usuarios/index.php?respuesta=error&mensaje=".$e->getMessage());
+        }
+    }
+
+    static public function inactivate (){
+        try {
+            $ObjUsuario = Productos::searchForId($_GET['Id']);
+            $ObjUsuario->setEstado("Inactivo");
+            if($ObjUsuario->update()){
+                header("Location: ../../views/modules/usuarios/index.php");
+            }else{
+                header("Location: ../../views/modules/usuarios/index.php?respuesta=error&mensaje=Error al guardar");
+            }
+        } catch (\Exception $e) {
+            //var_dump($e);
+            header("Location: ../../views/modules/usuarios/index.php?respuesta=error");
+        }
+    }
+    static public function searchForID ($id){
+        try {
+            return Productos::searchForId($id);
+        } catch (\Exception $e) {
+            var_dump($e);
+            //header("Location: ../../views/modules/usuarios/manager.php?respuesta=error");
+        }
+    }
+
+    static public function getAll (){
+        try {
+            return Productos::getAll();
+        } catch (\Exception $e) {
+            var_dump($e);
+            //header("Location: ../Vista/modules/persona/manager.php?respuesta=error");
+        }
+    }
     /*public static function personaIsInArray($idPersona, $ArrPersonas)
     {
         if (count($ArrPersonas) > 0) {
@@ -247,7 +323,6 @@ class VentasController
 
 
 }*/
-
 
 
 }

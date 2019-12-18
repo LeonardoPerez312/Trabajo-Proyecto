@@ -1,19 +1,19 @@
 <?php
 require("../../partials/routes.php");
-require("../../../app/Controllers/UsuariosController.php");
+require("../../../App/Controllers/BicicletasController.php");
 
-use App\Controllers\UsuariosController; ?>
+
+use App\Controllers\BicicletasController; ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title><?= getenv('TITLE_SITE') ?> | Editar Usuario</title>
+    <title><?= getenv('TITLE_SITE') ?> | Editar Bicicleta</title>
     <?php require("../../partials/head_imports.php"); ?>
 </head>
 <body class="hold-transition sidebar-mini">
 
 <!-- Site wrapper -->
 <div class="wrapper">
-    <?php require("../../partials/navbar_customization.php"); ?>
 
     <?php require("../../partials/sliderbar_main_menu.php"); ?>
 
@@ -24,11 +24,11 @@ use App\Controllers\UsuariosController; ?>
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Editar Nuevo Usuario</h1>
+                        <h1>Editar Nueva Bicicleta</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="<?= $baseURL; ?>/Views/">Bicicletas</a></li>
+                            <li class="breadcrumb-item"><a href="<?= $baseURL; ?>/Vistas/">Trabajo-Proyecto</a></li>
                             <li class="breadcrumb-item active">Inicio</li>
                         </ol>
                     </div>
@@ -44,7 +44,7 @@ use App\Controllers\UsuariosController; ?>
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <h5><i class="icon fas fa-ban"></i> Error!</h5>
-                        Error al crear el usuario: <?= ($_GET['mensaje']) ?? "" ?>
+                        Error al crear Bicicleta: <?= ($_GET['mensaje']) ?? "" ?>
                     </div>
                 <?php } ?>
             <?php } else if (empty($_GET['id'])) { ?>
@@ -58,73 +58,67 @@ use App\Controllers\UsuariosController; ?>
             <!-- Horizontal Form -->
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">Horizontal Form</h3>
+                    <h3 class="card-title">Bicicleta </h3>
                 </div>
                 <!-- /.card-header -->
                 <?php if(!empty($_GET["id"]) && isset($_GET["id"])){ ?>
                     <p>
                     <?php
-                    $DataUsuario = \App\Controladores\BicicletasController::searchForID($_GET["id"]);
-                    if(!empty($DataUsuario)){
+                    $DataBicicleta = \App\Controladores\BicicletasController::searchForID($_GET["id"]);
+                    if(!empty($DataBicicleta)){
                         ?>
                         <!-- form start -->
                 <form class="form-horizontal" method="post" id="frmCreateUsuario" name="frmCreateUsuario" action="../../../App/Controladores/BicicletasController.php?action=crear">
-                            <input id="id" name="id" value="<?php echo $DataUsuario->getId(); ?>" hidden required="required" type="text">
+                            <input id="id" name="id" value="<?php echo $DataBicicleta->getId(); ?>" hidden required="required" type="text">
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label for="nombres" class="col-sm-2 col-form-label">IdBicicleta</label>
+                                    <label for="Referencia" class="col-sm-2 col-form-label">Referencia</label>
                                     <div class="col-sm-10">
-                                        <input required type="text" class="form-control" id="IdBicicleta" name="IdBicicleta" value="<?= $DataUsuario-> getIdBicicletas(); ?>" placeholder="Ingrese sus nombres">
+                                        <input required type="text" class="form-control" id="Referencia" name="Referencia" value="<?= $DataBicicleta->getReferencia(); ?>" placeholder="Ingrese su Referencia">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="apellidos" class="col-sm-2 col-form-label">Referencia</label>
+                                    <label for="Unidades" class="col-sm-2 col-form-label">Unidades</label>
                                     <div class="col-sm-10">
-                                        <input required type="text" class="form-control" id="Referencia" name="Referencia" value="<?= $DataUsuario->getReferencia(); ?>" placeholder="Ingrese sus apellidos">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="apellidos" class="col-sm-2 col-form-label">Unidades</label>
-                                    <div class="col-sm-10">
-                                        <input required type="text" class="form-control" id="Unidades" name="Unidades" value="<?= $DataUsuario->getUnidades(); ?>" placeholder="Ingrese sus apellidos">
+                                        <input required type="text" class="form-control" id="Unidades" name="Unidades" value="<?= $DataBicicleta->getUnidades(); ?>" placeholder="Ingrese sus Unidades">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="apellidos" class="col-sm-2 col-form-label">Marca</label>
+                                    <label for="Marca" class="col-sm-2 col-form-label">Marca</label>
                                     <div class="col-sm-10">
-                                        <input required type="text" class="form-control" id="Marca" name="Marca" value="<?= $DataUsuario->getMarca(); ?>" placeholder="Ingrese sus apellidos">
+                                        <input required type="text" class="form-control" id="Marca" name="Marca" value="<?= $DataBicicleta->getMarca(); ?>" placeholder="Ingrese sus Marcas">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="apellidos" class="col-sm-2 col-form-label">Precio</label>
+                                    <label for="Precio" class="col-sm-2 col-form-label">Precio</label>
                                     <div class="col-sm-10"
-                                        <input required type="text" class="form-control" id="Precio" name="Precio" value="<?= $DataUsuario-> getPrecio(); ?>" placeholder="Ingrese sus apellidos">
+                                        <input required type="text" class="form-control" id="Precio" name="Precio" value="<?= $DataBicicleta-> getPrecio(); ?>" placeholder="Ingrese sus Precios">
                                     </div>
 
                                 </div>
                                  <div class="form-group row">
-                                         <label for="documento" class="col-sm-2 col-form-label">Color</label>
+                                         <label for="Color" class="col-sm-2 col-form-label">Color</label>
                                             <div class="col-sm-10">
-                                                  <input required type="number" minlength="6" class="form-control" id="Color" name="Color" value="<?= $DataUsuario->getColor(); ?>" placeholder="Ingrese su documento">
+                                                  <input required type="number" minlength="6" class="form-control" id="Color" name="Color" value="<?= $DataBicicleta->getColor(); ?>" placeholder="Ingrese su Color">
                                     </div>
                                  </div>
 
 
                                 <div class="form-group row">
-                                    <label for="tipo_documento" class="col-sm-2 col-form-label">Modelo</label>
+                                    <label for="Modelo" class="col-sm-2 col-form-label">Modelo</label>
                                     <div class="col-sm-10">
                                         <select id="Modelo" name="Modelo" class="custom-select">
-                                            <option <?= ($DataUsuario-> getModelo() == "C.C") ? "selected":""; ?> value="C.C">Cicla para Niño</option>
-                                            <option <?= ($DataUsuario-> getModelo() == "T.I") ? "selected":""; ?> value="T.I">Cicla para Ciclo Montañismo</option>
+                                            <option <?= ($DataBicicleta-> getModelo() == "C.C") ? "selected":""; ?> value="C.C">Cicla para Niño</option>
+                                            <option <?= ($DataBicicleta-> getModelo() == "T.I") ? "selected":""; ?> value="T.I">Cicla para Ciclo Montañismo</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="documento" class="col-sm-2 col-form-label">Fecha</label>
+                                    <label for="Fecha" class="col-sm-2 col-form-label">Fecha</label>
                                     <div class="col-sm-10">
-                                        <input required type="number" minlength="6" class="form-control" id="Fecha" name="Fecha" value="<?= $DataUsuario-> getFecha(); ?>" placeholder="Ingrese su documento">
+                                        <input required type="date" minlength="6" class="form-control" id="Fecha" name="Fecha" value="<?= $DataBicicleta-> getFecha(); ?>" placeholder="Ingrese su Fecha">
                                     </div>
                                 </div>
 

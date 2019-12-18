@@ -4,7 +4,7 @@
 namespace App\Modelos;
 
 
-class Ventas
+class Ventas  extends db_abstract_class
 {
     private $idVenta;
     private $Valor;
@@ -18,12 +18,17 @@ class Ventas
      * @param $Forma_Pago
      * @param $Fecha
      */
-    public function __construct($idVenta, $Valor, $Forma_Pago, $Fecha)
+    public function __construct($venta = array())
     {
-        $this->idVenta = $idVenta;
-        $this->Valor = $Valor;
-        $this->Forma_Pago = $Forma_Pago;
-        $this->Fecha = $Fecha;
+        parent::__construct();
+        $this->idVenta = $venta;
+        $this->Valor = $venta;
+        $this->Forma_Pago = $venta;
+        $this->Fecha = $venta;
+    }
+    /* Metodo destructor cierra la conexion. */
+    function __destruct() {
+        $this->Disconnect();
     }
 
     /**
@@ -35,11 +40,27 @@ class Ventas
     }
 
     /**
+     * @param mixed $idVenta
+     */
+    public function setIdVenta($idVenta): void
+    {
+        $this->idVenta = $idVenta;
+    }
+
+    /**
      * @return mixed
      */
     public function getValor()
     {
         return $this->Valor;
+    }
+
+    /**
+     * @param mixed $Valor
+     */
+    public function setValor($Valor): void
+    {
+        $this->Valor = $Valor;
     }
 
     /**
@@ -51,6 +72,14 @@ class Ventas
     }
 
     /**
+     * @param mixed $Forma_Pago
+     */
+    public function setFormaPago($Forma_Pago): void
+    {
+        $this->Forma_Pago = $Forma_Pago;
+    }
+
+    /**
      * @return mixed
      */
     public function getFecha()
@@ -58,6 +87,13 @@ class Ventas
         return $this->Fecha;
     }
 
+    /**
+     * @param mixed $Fecha
+     */
+    public function setFecha($Fecha): void
+    {
+        $this->Fecha = $Fecha;
+    }
 
     protected function store()
     {
@@ -74,7 +110,7 @@ class Ventas
 
     protected function update()
     {
-        $this->updateRow("UPDATE weber.Bicicleta SET nombres = ?, apellidos = ?, tipo_documento = ?, documento = ?, telefono = ?, direccion = ?, user = ?, password = ?, rol = ?, estado = ? WHERE id = ?", array(
+        $this->updateRow("UPDATE weber.Ventas SET idVenta = ?, Valor = ?, Forma_Pago = ?, Fecha = ?,  WHERE id = ?", array(
                 $this->idVenta,
                 $this->Valor,
                 $this->Forma_Pago,
@@ -113,7 +149,7 @@ class Ventas
     {
         $Usuario = new Ventas();
         if ($id > 0){
-            $getrow = $Usuario->getRow("SELECT * FROM weber.Venta WHERE id =?", array($id));
+            $getrow = $Usuario->getRow("SELECT * FROM weber.Ventas WHERE id =?", array($id));
             $Usuario->idVenta = $getrow['idVenta'];
             $Usuario->Forma_Pago = $getrow['Forma_Pago'];
             $Usuario->Fecha = $getrow['Fecha'];
@@ -128,8 +164,10 @@ class Ventas
 
     protected static function getAll()
     {
-        return Bicicleta::buscar("SELECT * FROM weber.Bicicleta");
+        return Ventas::buscar("SELECT * FROM weber.Ventas");
     }
+
+
 
 
 

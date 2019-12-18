@@ -1,17 +1,12 @@
 <?php
 
 
-namespace App\Controladores;
-use App\Controllers\UsuariosController;
+namespace App\Controllers;
 use App\Modelos\Persona;
-use App\Models\Usuarios;
 
-if(!empty($_GET['action'])){
+if(!empty($_GET['action'])) {
     PersonaController::main($_GET['action']);
-}else {
-    echo "No se encontro ninguna accion...";
 }
-
 class PersonaController
 {
 
@@ -57,8 +52,8 @@ class PersonaController
             $arrayUsuario['estado'] = 'Activo';
 
 
-            if(!Usuarios::usuarioRegistrado($arrayUsuario['documento'])){
-                $Usuario = new Persona() ($arrayUsuario);
+            if(!Persona::usuarioRegistrado($arrayUsuario['documento'])){
+                $Usuario = new Persona ($arrayUsuario);
                 if($Usuario->create()){
                     header("Location: ../../views/modules/usuarios/index.php?respuesta=correcto");
                 }
@@ -124,7 +119,7 @@ class PersonaController
 
     static public function searchForID ($id){
         try {
-            return Usuarios::searchForId($id);
+            return Persona::searchForId($id);
         } catch (\Exception $e) {
             var_dump($e);
             //header("Location: ../../views/modules/usuarios/manager.php?respuesta=error");
@@ -133,7 +128,7 @@ class PersonaController
 
     static public function getAll (){
         try {
-            return Usuarios::getAll();
+            return Persona::getAll();
         } catch (\Exception $e) {
             var_dump($e);
             //header("Location: ../Vista/modules/persona/manager.php?respuesta=error");

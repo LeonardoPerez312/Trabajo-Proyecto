@@ -4,7 +4,7 @@
 namespace App\Modelos;
 
 
-class Productos
+class Productos   extends db_abstract_class
 {
     private $idProducto;
     private $Codigo;
@@ -20,20 +20,19 @@ class Productos
      * @param $Referencia
      * @param $Valor_Unidad
      */
-    public function __construct($idProducto, $Codigo, $Unidades, $Referencia, $Valor_Unidad)
+    public function __construct($producto =  array())
     {
-        $this->idProducto = $idProducto['idProducto'];
-        $this->Codigo = $Codigo['Codigo'];
-        $this->Unidades = $Unidades['Unidades'];
-        $this->Referencia = $Referencia['Referencia'];
-        $this->Valor_Unidad = $Valor_Unidad['Valor_Unidad'];
+        parent::__construct();
+        $this->idProducto = $producto['id']?? null;
+        $this->Codigo = $producto['codigo']?? null;
+        $this->Unidades = $producto['unidades']?? null;
+        $this->Referencia = $producto['referencia']?? null;
+        $this->Valor_Unidad = $producto['valor_unidad']?? null;
     }
-
     /* Metodo destructor cierra la conexion. */
     function __destruct() {
         $this->Disconnect();
     }
-
 
     /**
      * @return mixed
@@ -41,6 +40,14 @@ class Productos
     public function getIdProducto()
     {
         return $this->idProducto;
+    }
+
+    /**
+     * @param mixed $idProducto
+     */
+    public function setIdProducto($idProducto): void
+    {
+        $this->idProducto = $idProducto;
     }
 
     /**
@@ -52,11 +59,27 @@ class Productos
     }
 
     /**
+     * @param mixed $Codigo
+     */
+    public function setCodigo($Codigo): void
+    {
+        $this->Codigo = $Codigo;
+    }
+
+    /**
      * @return mixed
      */
     public function getUnidades()
     {
         return $this->Unidades;
+    }
+
+    /**
+     * @param mixed $Unidades
+     */
+    public function setUnidades($Unidades): void
+    {
+        $this->Unidades = $Unidades;
     }
 
     /**
@@ -68,6 +91,14 @@ class Productos
     }
 
     /**
+     * @param mixed $Referencia
+     */
+    public function setReferencia($Referencia): void
+    {
+        $this->Referencia = $Referencia;
+    }
+
+    /**
      * @return mixed
      */
     public function getValorUnidad()
@@ -75,9 +106,17 @@ class Productos
         return $this->Valor_Unidad;
     }
 
+    /**
+     * @param mixed $Valor_Unidad
+     */
+    public function setValorUnidad($Valor_Unidad): void
+    {
+        $this->Valor_Unidad = $Valor_Unidad;
+    }
+
     protected function store()
     {
-        $this->insertRow("INSERT INTO weber.usuarios VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array(
+        $this->insertRow("INSERT INTO weber.Productos VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array(
                 $this->idProducto,
                 $this->Codigo,
                 $this->Unidades,
@@ -91,7 +130,7 @@ class Productos
 
     protected function update()
     {
-        $this->updateRow("UPDATE weber.usuarios SET nombres = ?, apellidos = ?, tipo_documento = ?, documento = ?, telefono = ?, direccion = ?, user = ?, password = ?, rol = ?, estado = ? WHERE id = ?", array(
+        $this->updateRow("UPDATE weber.Productos SET idProducto = ?, Codigo = ?, Unidades = ?, Referencia = ?, Valor_Unidad = ? WHERE id = ?", array(
                 $this->idProducto,
                 $this->Codigo,
                 $this->Unidades,
@@ -133,6 +172,8 @@ class Productos
         $tmp->Disconnect();
         return $arrUsuarios;
     }
+
+
 
 
 
